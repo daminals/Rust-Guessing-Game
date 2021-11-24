@@ -1,11 +1,25 @@
-use ferris_says::say; // from cargo.toml
-use std::io::{stdout, BufWriter};
+use std::io;
 
 fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello World!");
-    let width = message.chars().count();
+    let upperB = 1000;
+    let lowerB = 0;
+    println!("Guess the number!");
+    println!("I am thinking of a number between {} and {}. Please try to guess it", lowerB, upperB);
+}
+fn game() {
+    let mut guess = String::new();
+    io::stdin()
+    .read_line(&mut guess)
+    .expect("Failed to read line");
 
-    let mut writer = BufWriter::new(stdout.lock());
-    say(message.as_bytes(), width, &mut writer).unwrap();
+    let trimmed = guess.trim(); 
+    match trimmed.parse::<u32>() {
+        Ok(i) => {
+        
+
+        },
+        Err(..) => println!("Oh honey that was NOT an integer..."),
+    };
+
+
 }
